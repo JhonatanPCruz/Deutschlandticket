@@ -6,12 +6,12 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
         <!-- Ícono para pantalla de inicio en iOS -->
     <link rel="apple-touch-icon" href="favicon.ico">
-
     <!-- Configuración para que se vea como app fullscreen -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="DeutschlnadCard">
-    <title>DeutschlandCard</title>
+    <meta name="format-detection" content="telephone=no">
+    <title>Deutschlandticket Ticket</title>
 </head>
 <style>
     @font-face {
@@ -94,7 +94,7 @@
     } 
     body{
         height: 100vh;
-        width: 100vh;
+        width: 100vw;
         font-size: 16px;
         padding: 2rem 3rem 2rem 3rem;
     }
@@ -109,18 +109,19 @@
         gap: 2rem;
     }
     header .img img{
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
     }
     #timer{
         color: #DA0519;
+        font-size: 2rem;
         font-family: "segoeuithi";
         font-weight: 700;
         padding: 20px;             /* Espacio interior */
         border-radius: 50%;        /* Lo hace completamente redondo */
         border: 4px solid #DA0519;
-        width: 60px;              /* Asegúrate que ancho y alto sean iguales */
-        height: 60px;
+        width: 100px;              /* Asegúrate que ancho y alto sean iguales */
+        height: 100px;
         display: flex;             /* Para centrar el texto */
         justify-content: center;
         align-items: center;
@@ -134,9 +135,8 @@
         width: 100%;
         font-family: "Helvetica";
         font-weight: 700;
-        font-size: 1rem;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     .container-ticket .qr{
         display: flex;
@@ -146,9 +146,13 @@
     }
     .container-ticket .id-ticket{
         font-family: "segoeuithi";
-        font-size: 1.8rem;
+        font-size: 2.3rem;
         font-weight: 500;
         text-align: center;
+        color: black !important;
+        text-decoration: none !important;
+        pointer-events: none; /* Si quieres que no sea clickeable */
+        cursor: default;
     }
     .linea {
         border: none;              /* Quita el borde predeterminado */
@@ -159,7 +163,7 @@
     .container-ticket .date-user{
         font-family: "Helvetica";
         font-weight: 100;
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 0.5;
     }
     .line-height2-p{
@@ -168,14 +172,13 @@
     .expire-date .line-height2-p{
         font-family: "Helvetica";
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 1;
     }
     .expire-date{
         font-family: "Helvetica";
         font-weight: 100;
-        font-size: 1rem;
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 0.5;
     }
     .expire-date .info{
@@ -185,13 +188,13 @@
         font-family: "Helvetica";
         font-weight: 100;
         font-size: 1rem;
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 1;
     }
     .info-pay .line-height2-p{
         font-family: "Helvetica";
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 1;
     }
     .info-pay img{
@@ -201,7 +204,7 @@
     .footer .p-footer{
         font-family: "Helvetica";
         font-weight: 100;
-        font-size: 1.4rem;
+        font-size: 1.9rem;
         line-height: .5;
     }
 </style>
@@ -224,7 +227,7 @@
                 <img src=".//build/assets/image/QR.png" alt="qr-ticket">
             </article>
             <article class="id-ticket">
-                <p>4242720549</p>                                      <!-- Cambiar esto -->
+                <p>4242735467</p>                                      <!-- Cambiar esto -->
             </article>
             <hr class="linea">
             <article class="date-user">
