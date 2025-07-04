@@ -1,321 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <!-- Ícono para pantalla de inicio en iOS -->
-    <link rel="apple-touch-icon" href="favicon.ico">
-    <!-- Configuración para que se vea como app fullscreen -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="DeutschlnadCard">
-    <meta name="format-detection" content="telephone=no">
-    <title>Deutschlandticket Ticket</title>
-</head>
-<style>
-    @font-face {
-        font-family: "Roboto";
-        src: url(./build/assets/fonts/Roboto-Thin.woff2) format('truetype');
-        font-weight: 100;
-        font-style: normal;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.ico">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="DeutschlandCard">
+  <meta name="format-detection" content="telephone=no">
+  <title>Deutschlandticket Ticket</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      box-sizing: border-box;
+      background: #fff;
     }
-    @font-face {
-        font-family: "Roboto";
-        src: url(.//build/assets/fonts/Roboto-Light.woff2) format('truetype');
-        font-weight: 300;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Roboto";
-        src: url(.//build/assets/fonts/Roboto-Regular.woff2) format('truetype');
-        font-weight: 400;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Roboto";
-        src: url(.//build/assets/fonts/Roboto-Medium.woff2) format('truetype');
-        font-weight: 500;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Roboto";
-        src: url(//build/assets/fonts/Roboto-Bold.woff2) format('truetype');
-        font-weight: 700;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Roboto";
-        src: url(.//build/assets/fonts/Roboto-Black.woff2) format('truetype');
-        font-weight: 900;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "DIN1451";
-        src: url(.//build/assets/fonts/DIN1451-36breit.woff2) format('truetype');
-        font-weight: 900;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Helvetica";
-        src: url(.//build/assets/fonts/helvetica-light-587ebe5a59211.woff2) format('truetype');
-        font-weight: 200;
-        font-style: normal;
-    } 
-    @font-face {
-        font-family: "Helvetica";
-        src: url(.//build/assets/fonts/Helvetica.woff2) format('truetype');
-        font-weight: 400;
-        font-style: normal;
-    } 
-    @font-face {
-        font-family: "Helvetica";
-        src: url(.//build/assets/fonts/helvetica-compressed-5871d14b6903a.woff2) format('truetype');
-        font-weight: 600;
-        font-style: normal;
-    } 
-    @font-face {
-        font-family: "Helvetica";
-        src: url(.//build/assets/fonts/Helvetica-Bold.woff2) format('truetype');
-        font-weight: 900;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "segoeuithi";
-        src: url(.//build/assets/fonts/segoeuithis.woff2) format('truetype');
-        font-weight: 400;
-        font-style: normal;
-    } 
-    @font-face {
-        font-family: "segoeuithi";
-        src: url(.//build/assets/fonts/segoeuithibd.woff2) format('truetype');
-        font-weight: 900;
-        font-style: normal;
-    } 
-    body{
-        height: 100vh;
-        width: 600px;
-        font-size: 16px;
-        padding: 2rem 3rem 2rem 3rem; 
+    .wrapper {
+      width: 100%;
+      max-width: 600px; /* Puedes cambiar a 480px si prefieres */
+      margin: 0 auto;
+      padding: 1rem;
+      box-sizing: border-box;
     }
     header {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    header .img{
-        display: flex;
-        gap: 2rem;
+    header .img {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
-    header .img img{
-        width: 150px;
-        height: 150px;
+    header .img img {
+      width: 120px;
+      height: auto;
     }
-    #timer{
-        color: #DA0519;
-        font-size: 2rem;
-        font-family: "segoeuithi";
-        font-weight: 700;
-        padding: 20px;             /* Espacio interior */
-        border-radius: 50%;        /* Lo hace completamente redondo */
-        border: 4px solid #DA0519;
-        width: 100px;              /* Asegúrate que ancho y alto sean iguales */
-        height: 100px;
-        display: flex;             /* Para centrar el texto */
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;    /* Incluye el padding dentro del tamaño */
+    #timer {
+      color: #DA0519;
+      font-size: 1.5rem;
+      font-family: "segoeuithi";
+      font-weight: 700;
+      padding: 10px;
+      border-radius: 50%;
+      border: 3px solid #DA0519;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
     }
-    .container-ticket{
-        display: flex;
-        flex-direction:column;
+    .container-ticket {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .container-ticket .title{
-        width: 100%;
-        font-family: "Helvetica";
-        font-weight: 700;
-        text-align: center;
-        font-size: 2rem;
+    .container-ticket .title {
+      text-align: center;
+      font-family: "Helvetica";
+      font-weight: 700;
+      font-size: 1.6rem;
     }
-    .container-ticket .qr{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 2rem;
+    .container-ticket .qr {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .container-ticket .id-ticket{
-        font-family: "segoeuithi";
-        font-size: 2.3rem;
-        font-weight: 500;
-        text-align: center;
-        color: black !important;
-        text-decoration: none !important;
-        pointer-events: none; /* Si quieres que no sea clickeable */
-        cursor: default;
+    .container-ticket .qr img {
+      max-width: 100%;
+      height: auto;
+    }
+    .container-ticket .id-ticket {
+      font-family: "segoeuithi";
+      font-size: 1.8rem;
+      font-weight: 500;
+      text-align: center;
     }
     .linea {
-        border: none;              /* Quita el borde predeterminado */
-        height: 1px;               /* Grosor de la línea */
-        background-color: #E0E0E0; /* Color */
-        width: 100%;               /* Ancho (puedes ajustar) */
+      border: none;
+      height: 1px;
+      background-color: #E0E0E0;
+      width: 100%;
     }
-    .container-ticket .date-user{
-        font-family: "Helvetica";
-        font-weight: 100;
-        font-size: 2rem;
-        line-height: 0.5;
+    .container-ticket .date-user,
+    .expire-date,
+    .info-pay,
+    .footer .p-footer {
+      font-family: "Helvetica";
+      font-size: 1.2rem;
+      line-height: 1.4;
     }
-    .line-height2-p{
-        line-height: 2;
+    .container-ticket .date-user p,
+    .expire-date p,
+    .info-pay p,
+    .footer .p-footer {
+      margin: 0.3em 0;
     }
-    .expire-date .line-height2-p{
-        font-family: "Helvetica";
-        font-weight: 700;
-        font-size: 2rem;
-        line-height: 1;
+    .expire-date .info {
+      color: #DD0209;
     }
-    .expire-date{
-        font-family: "Helvetica";
-        font-weight: 100;
-        font-size: 2rem;
-        line-height: 0.5;
+    .info-pay img {
+      width: 80px;
+      height: auto;
+      display: block;
+      margin: 1rem auto;
     }
-    .expire-date .info{
-        color: #DD0209;
-    }
-    .info-pay{
-        font-family: "Helvetica";
-        font-weight: 100;
-        font-size: 1rem;
-        font-size: 2rem;
-        line-height: 1;
-    }
-    .info-pay .line-height2-p{
-        font-family: "Helvetica";
-        font-weight: 700;
-        font-size: 2rem;
-        line-height: 1;
-    }
-    .info-pay img{
+    @media (min-width: 768px) {
+      .wrapper {
+        padding: 2rem 3rem;
+      }
+      header .img img {
+        width: 150px;
+      }
+      #timer {
         width: 100px;
         height: 100px;
+        font-size: 2rem;
+      }
+      .container-ticket .title {
+        font-size: 2rem;
+      }
+      .container-ticket .id-ticket {
+        font-size: 2.3rem;
+      }
+      .container-ticket .date-user,
+      .expire-date,
+      .info-pay,
+      .footer .p-footer {
+        font-size: 1.5rem;
+      }
     }
-    .footer .p-footer{
-        font-family: "Helvetica";
-        font-weight: 100;
-        font-size: 1.9rem;
-        line-height: .5;
-    }
-</style>
+  </style>
+</head>
 <body>
+  <div class="wrapper">
     <header>
-        <section class="img">
-            <img src=".//build/assets/image/D-Ticket_Logo.svg" alt="Logo svg D-TICKET">
-            <img src=".//build/assets/image/SWK_Stadtwerke_Krefeld_Logo.svg" alt="Logo svg SWK">
-        </section>
-        <section id="countdown-section">
-            <div id="timer">02:00</div>
-        </section>
+      <section class="img">
+        <img src="./build/assets/image/D-Ticket_Logo.svg" alt="Logo svg D-TICKET">
+        <img src="./build/assets/image/SWK_Stadtwerke_Krefeld_Logo.svg" alt="Logo svg SWK">
+      </section>
+      <section id="countdown-section">
+        <div id="timer">02:00</div>
+      </section>
     </header>
     <main>
-        <section class="container-ticket">
-            <article class="title">
-                <h1>Deutschlandticket</h1>
-            </article>
-            <article class="qr">
-                <img src=".//build/assets/image/QR.png" alt="qr-ticket">
-            </article>
-            <article class="id-ticket">
-                <p>4242735467</p>                                      <!-- Cambiar esto -->
-            </article>
-            <hr class="linea">
-            <article class="date-user">
-                <p class="line-height2-p">Fahrtberechtigte Person:</p>
-                <p>Identifikation mit:</p>
-                <p>Amtlicher Lichtbildausweis</p>
-                <p>JHONATAN PERDOMO CRUZ</p>                    <!-- Cambiar esto -->
-                <p>31.10.1996</p>                                      <!-- Cambiar esto -->
-            </article>
-            <hr class="linea">
-            <article class="expire-date">
-                <p>Gültigkeit:</p>
-                <p class="line-height2-p">von 01.07.2025, 00:00 Uhr</p> <!-- Cambiar esto -->
-                <p class="line-height2-p">bis 01.08.2025, 03:00 Uhr</p> <!-- Cambiar esto -->
-                <p class="info">Das Deutschlandticket ist ein von der</p>
-                <p class="info">Bundesrepublik Deutschland und den</p>
-                <p class="info">Bundesländern gefördertes deutschlandweit</p>
-                <p class="info">gültiges Tarifangebot im</p>
-                <p class="info">Schienenpersonennahverkehr (SPNV) und im</p>
-                <p class="info">öffentlichen Personennahverkehr (ÖPNV).</p>
-                <p class="info">Ausgenommen sind der Fernverkehr und Fahrten</p>
-                <p class="info">in der ersten Klasse. Es gilt als Monatskarte im</p>
-                <p class="info">Abo, ab dem 01.05.2023, vorbehaltlich des</p>
-                <p class="info">abgeschlossenen Gesetzgebungsverfahrens.</p>
-            </article>
-            <hr class="linea">
-            <article class="info-pay">
-                <p class="line-height2-p">Preis: 58.00 EUR inkl. MwSt</p> <!-- Cambiar esto -->
-                <p>Gekauft am 01.06.2025, 22:50 Uhr</p> <!-- Cambiar esto -->
-                <p>Ausgestellt 30.06.2025, 11:20 Uhr</p> <!-- Cambiar esto -->
-                <img src=".//build/assets/image/D-Ticket_Logo.svg" alt="Logo svg D-TICKET">
-            </article>
-            <article class="footer">
-                <p class="p-footer">Dieser Fahrausweis berechtigt nicht zum</p>
-                <p class="p-footer">Vorsteuerabzug.</p>
-            </article>            
-        </section>
+      <section class="container-ticket">
+        <article class="title">
+          <h1>Deutschlandticket</h1>
+        </article>
+        <article class="qr">
+          <img src="./build/assets/image/QR.png" alt="qr-ticket">
+        </article>
+        <article class="id-ticket">
+          <p>4242735467</p>
+        </article>
+        <hr class="linea">
+        <article class="date-user">
+          <p>Fahrtberechtigte Person:</p>
+          <p>Identifikation mit:</p>
+          <p>Amtlicher Lichtbildausweis</p>
+          <p>JHONATAN PERDOMO CRUZ</p>
+          <p>31.10.1996</p>
+        </article>
+        <hr class="linea">
+        <article class="expire-date">
+          <p>Gültigkeit:</p>
+          <p>von 01.07.2025, 00:00 Uhr</p>
+          <p>bis 01.08.2025, 03:00 Uhr</p>
+          <p class="info">Das Deutschlandticket ist ein von der Bundesrepublik Deutschland und den Bundesländern gefördertes deutschlandweit gültiges Tarifangebot im Schienenpersonennahverkehr (SPNV) und im öffentlichen Personennahverkehr (ÖPNV). Ausgenommen sind der Fernverkehr und Fahrten in der ersten Klasse. Es gilt als Monatskarte im Abo, ab dem 01.05.2023, vorbehaltlich des abgeschlossenen Gesetzgebungsverfahrens.</p>
+        </article>
+        <hr class="linea">
+        <article class="info-pay">
+          <p>Preis: 58.00 EUR inkl. MwSt</p>
+          <p>Gekauft am 01.06.2025, 22:50 Uhr</p>
+          <p>Ausgestellt 30.06.2025, 11:20 Uhr</p>
+          <img src="./build/assets/image/D-Ticket_Logo.svg" alt="Logo svg D-TICKET">
+        </article>
+        <article class="footer">
+          <p class="p-footer">Dieser Fahrausweis berechtigt nicht zum Vorsteuerabzug.</p>
+        </article>
+      </section>
     </main>
-    <footer>
-
-    </footer>
-<script>
+  </div>
+  <script>
     let duration = 2 * 60;
     const timerDisplay = document.getElementById('timer');
     const countdown = setInterval(() => {
-    const minutes = Math.floor(duration / 60);
-    const seconds = duration % 60;
-    const formatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    timerDisplay.textContent = formatted;
-    if (duration === 0) {
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
+      const formatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      timerDisplay.textContent = formatted;
+      if (duration === 0) {
         clearInterval(countdown);
         timerDisplay.textContent = "00:00";
-    }
-    duration--;
+      }
+      duration--;
     }, 1000);
-
-document.addEventListener("DOMContentLoaded", () => {
-    const image = document.querySelector(".info-pay img");
-    const container = document.querySelector(".container-ticket"); // <- Cambiado aquí
-
-    let direction = 1; // 1 para derecha, -1 para izquierda
-    let position = 0; // Posición inicial
-    const speed = 1; // Velocidad del desplazamiento
-
-    const animate = () => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const image = document.querySelector(".info-pay img");
+      const container = document.querySelector(".container-ticket");
+      let direction = 1;
+      let position = 0;
+      const speed = 1;
+      const animate = () => {
         const containerWidth = container.clientWidth;
         const imageWidth = image.clientWidth;
-
-        // Actualizar posición
         position += direction * speed;
-
-        // Verificar límites
         if (position + imageWidth >= containerWidth) {
-        direction = -1; // Cambiar dirección a izquierda
+          direction = -1;
         } else if (position <= 0) {
-        direction = 1; // Cambiar dirección a derecha
+          direction = 1;
         }
-
-        // Aplicar la posición actual
         image.style.transform = `translateX(${position}px)`;
-
-        // Continuar la animación
         requestAnimationFrame(animate);
-    };
-
-    animate();
-});
-
-</script>
+      };
+      animate();
+    });
+  </script>
 </body>
 </html>
