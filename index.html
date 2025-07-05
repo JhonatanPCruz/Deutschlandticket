@@ -293,39 +293,50 @@
 </div>
 
   <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const image = document.querySelector(".info-pay img");
-  const container = document.querySelector(".container-ticket");
-
-  let direction = 1;
-  let position = 0;
-  const speed = 2; // Ajusta velocidad si quieres
-
-  const animate = () => {
-    const containerWidth = container.clientWidth;
-    const imageWidth = image.clientWidth;
-
-    // Actualizar posición
-    position += direction * speed;
-
-    // Verificar límites (SIN margen)
-    if (position + imageWidth >= containerWidth) {
-      direction = -1; // Cambiar dirección a izquierda
-      position = containerWidth - imageWidth; // Ajusta para no pasarse
-    } else if (position <= 0) {
-      direction = 1; // Cambiar dirección a derecha
-      position = 0; // Ajusta para no pasarse
+    let duration = 2 * 60;
+    const timerDisplay = document.getElementById('timer');
+    const countdown = setInterval(() => {
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration % 60;
+    const formatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    timerDisplay.textContent = formatted;
+    if (duration === 0) {
+        clearInterval(countdown);
+        timerDisplay.textContent = "00:00";
     }
+    duration--;
+    }, 1000);
 
-    // Aplicar la posición actual
-    image.style.transform = `translateX(${position}px)`;
+document.addEventListener("DOMContentLoaded", () => {
+    const image = document.querySelector(".info-pay img");
+    const container = document.querySelector(".container-ticket"); // <- Cambiado aquí
 
-    requestAnimationFrame(animate);
-  };
+    let direction = 1; // 1 para derecha, -1 para izquierda
+    let position = 0; // Posición inicial
+    const speed = 1; // Velocidad del desplazamiento
 
-  // Iniciar desde posición 0
-  position = 0;
-  animate();
+    const animate = () => {
+        const containerWidth = container.clientWidth;
+        const imageWidth = image.clientWidth;
+
+        // Actualizar posición
+        position += direction * speed;
+
+        // Verificar límites
+        if (position + imageWidth >= containerWidth) {
+        direction = -1; // Cambiar dirección a izquierda
+        } else if (position <= 0) {
+        direction = 1; // Cambiar dirección a derecha
+        }
+
+        // Aplicar la posición actual
+        image.style.transform = `translateX(${position}px)`;
+
+        // Continuar la animación
+        requestAnimationFrame(animate);
+    };
+
+    animate();
 });
   </script>
 </body>
